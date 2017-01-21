@@ -1,24 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
-	private Rigidbody m_Rigidbody;         
+    Vector3 velocity;
+    Rigidbody myRigidbody;
 
+    void Start() {
+        myRigidbody = GetComponent<Rigidbody>();
+    }
 
-	void Awake () {
-		m_Rigidbody = GetComponent<Rigidbody>();
+    public void Move(Vector3 _velocity) {
+        velocity = _velocity;
+    }
 
-	}
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public void LookAt(Vector3 lookPoint) {
+        Vector3 heightCorrectedPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z);
+        transform.LookAt(heightCorrectedPoint);
+    }
 
-	
-	// Update is called once per frame
-	void Update () {
-		
+    public void Dash(float dashInput) {
+        //IMPLEMENTAR DASH (usar el fixed update)
+        Debug.Log("Dash " + dashInput);
+    }
+
+    void FixedUpdate() {
+		myRigidbody.MovePosition (myRigidbody.position + velocity * Time.fixedDeltaTime);
 	}
 }
