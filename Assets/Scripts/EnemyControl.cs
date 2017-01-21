@@ -15,7 +15,9 @@ public class EnemyControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		m_Rigidbody.velocity = new Vector2 (moveSpeed,  Mathf.Abs(Mathf.Sin(2*Time.time)) );
+		float omega = 1f;
+		//float movimiento = (1 /Mathf.PI *( Mathf.Sin(omega*Time.time) + 1/3 * Mathf.Sin(3*omega*Time.time) + 1/5 * Mathf.Sin(5*omega*Time.time) ) );
+		//m_Rigidbody.position = new Vector2 (Time.time,  movimiento );
+		//m_Rigidbody.velocity = new Vector2 (moveSpeed,  Mathf.Abs(Mathf.Sin(2*Time.time)) );
 	}
 }
